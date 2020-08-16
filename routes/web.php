@@ -12,8 +12,13 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return view('index');
 });
+
+$router->get('/live/{uuid}', function ($uuid) use ($router) {
+    return view('player', ['uuid' => $uuid]);
+});
+
 
 // stream API
 $router->get('/api/v1/stream', 'StreamController@getStream');
