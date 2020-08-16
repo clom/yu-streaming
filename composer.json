@@ -6,7 +6,9 @@
     "type": "project",
     "require": {
         "php": "^7.2.5",
-        "laravel/lumen-framework": "^7.0"
+        "aws/aws-sdk-php-laravel": "^3.5",
+        "laravel/lumen-framework": "^7.0",
+        "ramsey/uuid": "^4.1"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.9.1",
