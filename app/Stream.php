@@ -20,6 +20,6 @@ class Stream extends Model
     ];
 
     protected $hidden = [
-        'ivs_arn',
+        'ivs_arn', 'is_delete', 'playback_url', 'rtmp_url', 'stream_key'
     ];
 }
