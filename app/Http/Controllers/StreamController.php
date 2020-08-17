@@ -49,7 +49,18 @@ class StreamController extends BaseController
                     ->orderBy('updated_at', 'desc')
                     ->first();
 
-    return response()->json($streams);
+    if (!$streams) {
+      return response()->json(['message' => 'not found streams'], 404);
+    }
+
+    $visibleCondition = ['playback_url'];
+
+    if (isset($request['is_get_stream_info']) && $request['is_get_stream_info'] == 'true') {
+      $visibleCondition = array_merge($visibleCondition, ['rtmp_url', 'stream_key']);
+    }
+
+
+    return response()->json($streams->makeVisible($visibleCondition));
   }
 
   public function createStream(Request $request)
@@ -76,8 +87,8 @@ class StreamController extends BaseController
       'rtmp_url' => 'rtmps://' . $result['channel']['ingestEndpoint'] . '/app',
       'stream_key' => $result['streamKey']['value']
     ]);
-  
-    return response()->json($stream, 201);
+
+    return response()->json($stream->makeVisible(['rtmp_url', 'stream_key']), 201);
   }
 
   public function updateStream($uuid, Request $request)
