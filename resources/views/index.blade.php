@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>Honoka</title>
+  <title>Yu-stream</title>
 
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/bootstrap.css') }}">
   <style type="text/css">
@@ -69,16 +69,50 @@
 </header>
 
 <div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">LiveName</th>
+      </tr>
+    </thead>
+    <tbody id="listLive">
+    </tbody>
+  </table>
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="{{ URL::asset('/js/bootstrap.min.js') }}"></script>
 
 <script type="text/javascript">
   $('.bs-component [data-toggle="popover"]').popover();
   $('.bs-component [data-toggle="tooltip"]').tooltip();
+</script>
+
+<script>
+    function getLiveList() {
+      $.ajax({
+        type: 'get',
+        url: '/api/v1/stream',
+        dataType: 'json',
+        success: function (data) {
+          var count = 1;
+          data.forEach(function (no) {
+            $('#listLive').append(
+              $('<tr class="table-active"></tr>')
+                .append('<th scope="row">1</th>')
+                .append('<td><a href="/live/' + no.uuid + '">' + no.name + '</a></td>')
+            );
+            count++;
+          });
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        }
+      });
+    }
+    getLiveList();
 </script>
 </body>
 </html>
