@@ -85,9 +85,9 @@ class ArchiveController extends BaseController
     $uuid = Uuid::uuid4();
     $archive = Archive::create([
       'uuid' => $uuid->toString(),
-      'name' => $request['name'],
+      'name' => $stream['name'],
       'stream_id' => $stream['id'],
-      'ivs_stream_id' => $request['stream_id'],
+      'ivs_stream_id' => $stream['stream_id'],
       'playback_url' => env('CDN_URL', 'http://localhost') . $request['playback_path']
     ]);
 
