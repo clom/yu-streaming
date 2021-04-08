@@ -15,9 +15,18 @@ $router->get('/', function () use ($router) {
     return view('index');
 });
 
+$router->get('/vod', function () use ($router) {
+    return view('vod');
+});
+
 $router->get('/live/{uuid}', function ($uuid) use ($router) {
     return view('player', ['uuid' => $uuid]);
 });
+
+$router->get('/vod/{uuid}', function ($uuid) use ($router) {
+    return view('player_vod', ['uuid' => $uuid]);
+});
+
 
 
 // stream API

@@ -60,10 +60,10 @@
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="./">Top <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="./">Top <span class="sr-only"></span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./vod">Vod <span class="sr-only"></span></a>
+            <a class="nav-link" href="./vod">Vod <span class="sr-only">(current)</span></a>
           </li>
         </ul>
       </div>
@@ -76,10 +76,10 @@
     <thead>
       <tr>
         <th scope="col">No.</th>
-        <th scope="col">LiveName</th>
+        <th scope="col">VodName</th>
       </tr>
     </thead>
-    <tbody id="listLive">
+    <tbody id="listVod">
     </tbody>
   </table>
 </div>
@@ -98,15 +98,15 @@
     function getLiveList() {
       $.ajax({
         type: 'get',
-        url: '/api/v1/stream',
+        url: '/api/v1/archive',
         dataType: 'json',
         success: function (data) {
           var count = 1;
           data.forEach(function (no) {
-            $('#listLive').append(
+            $('#listVod').append(
               $('<tr class="table-active"></tr>')
                 .append('<th scope="row">1</th>')
-                .append('<td><a href="/live/' + no.uuid + '">' + no.name + '</a></td>')
+                .append('<td><a href="/vod/' + no.uuid + '">' + no.name + '</a></td>')
             );
             count++;
           });
