@@ -88,7 +88,7 @@ class ArchiveController extends BaseController
       'name' => $stream['name'],
       'stream_id' => $stream['id'],
       'ivs_stream_id' => $request['stream_id'],
-      'playback_url' => env('CDN_URL', 'http://localhost') . $request['playback_path']
+      'playback_url' => env('CDN_URL', 'http://localhost') . $request['playback_path'] . '/media/hls/master.m3u8'
     ]);
 
     return response()->json([]);
