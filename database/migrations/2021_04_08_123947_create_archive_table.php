@@ -20,7 +20,7 @@ class CreateArchiveTable extends Migration
             $table->string('ivs_stream_id');
             $table->string('name');
             $table->text('playback_url');
-            $table->boolean('is_archived')->default(false);
+            $table->boolean('is_archive')->default(false);
             $table->boolean('is_delete')->default(false);
             $table->timestamps();
         });
