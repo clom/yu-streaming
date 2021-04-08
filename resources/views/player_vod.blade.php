@@ -71,10 +71,10 @@
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/">Top <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/">Top <span class="sr-only"></span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./vod">Vod <span class="sr-only"></span></a>
+            <a class="nav-link" href="/vod">Vod <span class="sr-only">(current)</span></a>
           </li>
         </ul>
       </div>
@@ -111,7 +111,7 @@
     function getLivedetail(uuid) {
       $.ajax({
         type: 'get',
-        url: '/api/v1/stream/' + uuid,
+        url: '/api/v1/archive/' + uuid,
         dataType: 'json',
         success: function (data) {
           $('#live_name').text(data.name);
