@@ -105,7 +105,7 @@
           data.forEach(function (no) {
             $('#listVod').append(
               $('<tr class="table-active"></tr>')
-                .append('<th scope="row">1</th>')
+                .append('<th scope="row">' + count + '</th>')
                 .append('<td><a href="/vod/' + no.uuid + '">' + no.name + '</a></td>')
             );
             count++;
