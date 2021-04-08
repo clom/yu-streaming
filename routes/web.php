@@ -30,3 +30,9 @@ $router->delete('/api/v1/stream/{uuid}', 'StreamController@deleteStream');
 // live API
 $router->post('/api/v1/live/start', 'LiveController@postLiveStart');
 $router->post('/api/v1/live/stop', 'LiveController@postLiveStop');
+
+// archive API
+$router->get('/api/v1/archive', 'ArchiveController@getArchive');
+$router->get('/api/v1/archive/{uuid}', 'ArchiveController@getArchiveByUuid');
+$router->post('/api/v1/archive/start', 'ArchiveController@postArchiveStart');
+$router->post('/api/v1/archive/stop', 'ArchiveController@postArchiveStop');
