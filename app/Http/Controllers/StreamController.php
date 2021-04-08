@@ -77,6 +77,7 @@ class StreamController extends BaseController
       'latencyMode' => 'LOW',
       'name' => $uuid->toString(),
       'type' => 'STANDARD',
+      'recordingConfigurationArn' => env('AWS_RECORDING_CONFIGURATION'),
     ]);
 
     $stream = Stream::create([
