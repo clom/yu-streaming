@@ -87,7 +87,7 @@ class ArchiveController extends BaseController
       'uuid' => $uuid->toString(),
       'name' => $stream['name'],
       'stream_id' => $stream['id'],
-      'ivs_stream_id' => $stream['stream_id'],
+      'ivs_stream_id' => $request['stream_id'],
       'playback_url' => env('CDN_URL', 'http://localhost') . $request['playback_path']
     ]);
 
